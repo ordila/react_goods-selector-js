@@ -18,7 +18,7 @@ export const goods = [
 export const App = () => {
   const [selectedGoods, setSelectedGoods] = useState('Jam');
 
-  const clearClick = () => {
+  const handleClearClick = () => {
     setSelectedGoods('');
   };
 
@@ -31,7 +31,7 @@ export const App = () => {
             data-cy="ClearButton"
             type="button"
             className="delete ml-3"
-            onClick={clearClick}
+            onClick={handleClearClick}
           />
         )}
       </h1>
@@ -39,9 +39,10 @@ export const App = () => {
         <tbody>
           {goods.map(good => (
             <tr
+              key={good}
               data-cy="Good"
               className={
-                selectedGoods === good && 'has-background-success-light'
+                selectedGoods === good ? 'has-background-success-light' : ''
               }
             >
               <td>
@@ -59,7 +60,7 @@ export const App = () => {
                     data-cy="RemoveButton"
                     type="button"
                     className="button is-info"
-                    onClick={clearClick}
+                    onClick={handleClearClick}
                   >
                     -
                   </button>
